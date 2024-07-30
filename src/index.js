@@ -6,6 +6,10 @@ const port = 3000;
 const hdb = require('express-handlebars');
 
 const route = require('./routes');
+const db = require('./config/db');
+
+//database connnect
+db.connect();
 
 // Template Engine
 app.engine('hbs', hdb.engine({ extname: '.hbs' }));
