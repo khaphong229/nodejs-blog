@@ -8,5 +8,16 @@ class CourseController {
             })
             .catch(next)
     }
+    create(req, res, next){
+        res.render('courses/create')
+    }
+    store(req, res, next){
+        const course=new Course(req.body)
+        course.save()
+            .then(()=> res.redirect('/'))
+            .catch(error => {
+
+            })
+    }
 }
 module.exports = new CourseController();
