@@ -19,5 +19,19 @@ class CourseController {
 
             })
     }
+    update(req, res, next){
+        Course.findById(req.params.id)
+            .then(course => {
+                res.render('courses/update',{
+                    course: mongooseToObject(course)
+                })
+            })
+            .catch(next)
+    }
+    storeUpdate(req, res, next){
+        Course.updateOne({_id: req.params.id }, req.body)
+            .then(() => res.redirect('/'))
+            .catch(next)
+    }
 }
 module.exports = new CourseController();

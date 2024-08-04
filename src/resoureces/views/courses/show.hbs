@@ -5,8 +5,10 @@
         </div>
         <div class="col-lg-3">
             <h2>{{course.name}}</h2>
-            <img src="{{course.image}}" alt="" style="width: 50%">
+            <img src="{{course.image}}" alt="" style="width: 100%">
             <p>{{course.description}}</p>
+            <a href="/courses/{{course._id}}/update" class="btn btn-primary">Update</a>
+            <a href="/courses/{{course._id}}" class="btn btn-primary">Delete</a>
         </div>
     </div>
 </div>

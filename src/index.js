@@ -4,6 +4,10 @@ const path = require('path');
 const app = express();
 const port = 3000;
 const hdb = require('express-handlebars');
+const methodOverride = require('method-override')
+
+
+app.use(methodOverride('_method'))
 
 const route = require('./routes');
 const db = require('./config/db');
@@ -15,6 +19,7 @@ db.connect();
 app.engine('hbs', hdb.engine({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resoureces/views'));
+
 
 // HTTP Logger
 app.use(morgan('combined'));
