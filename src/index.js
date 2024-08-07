@@ -6,11 +6,39 @@ const port = 3000;
 const hdb = require('express-handlebars');
 const methodOverride = require('method-override')
 
-
 app.use(methodOverride('_method'))
 
 const route = require('./routes');
 const db = require('./config/db');
+
+app.use(BacBaoVe)
+function BacBaoVe(req, res, next){
+    if(['vethuong','vevip'].includes(req.query.ve)){
+        req.face = 'gach gach gach'
+        return next()
+    }
+    res.status(403).json({
+        message: "Access denied"
+    })
+}
+
+app.get('/middleware',
+    function(req, res, next){
+        if(['vethuong','vevip'].includes(req.query.ve)){
+            req.face = 'gach gach gach'
+            return next()
+        }
+        res.status(403).json({
+            message: "Access denied"
+        })
+    },
+    function(req, res, next){
+        res.json({
+            message: 'Successfully',
+            face: req.face
+        })
+    }
+)
 
 //database connnect
 db.connect();
