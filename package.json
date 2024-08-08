@@ -31,6 +31,7 @@
     "nodemon": "^3.1.4"
   },
   "devDependencies": {
+    "dotenv": "^16.4.5",
     "husky": "^9.1.1",
     "lint-staged": "^15.2.7",
     "mongoose-delete": "^1.0.2",
